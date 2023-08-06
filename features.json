@@ -1,0 +1,49 @@
+{
+    "foo": {
+        "Label": "The foo feature is for testing ittybittyfeaturechecker",  
+        "Archived": false,
+        "Expression": "feature.Enabled[environment][params.Get('account_id')]",        
+        "Enabled": {
+            "integration": {                
+                "123": true
+            },
+            "qa": {},
+            "staging": {},
+            "production": {
+                "123": true,
+                "345": true,
+                "999": true
+            }
+        },
+        "Disabled": {
+            "integration": {},
+            "qa": {},
+            "staging": {},
+            "production": {}
+        }
+    },
+    "bar": {
+        "Label": "The bar feature is for testing ittybittyfeaturechecker",  
+        "Archived": false,
+        "Expression": "!feature.Disabled[environment][params.Get('account_id')]",        
+        "Enabled": {
+            "integration": {},
+            "qa": {},
+            "staging": {},
+            "production": {}
+        },
+        "Disabled": {
+            "integration": {},
+            "qa": {},
+            "staging": {},
+            "production": {
+                "123": true
+            }
+        }
+    },
+    "baz": {
+        "Label": "The baz feature is for testing ittybittyfeaturechecker",  
+        "Archived": false,
+        "Expression": "count % 2 == 0"        
+    }
+}
