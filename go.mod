@@ -1,3 +1,3 @@
-module example.com/gomod2nix-template
+module github.com/vhodges/ittybittyfeaturechecker
 
 go 1.17
