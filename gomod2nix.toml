@@ -1,3 +1,6 @@
-schema = 1
+schema = 3
 
 [mod]
+  [mod."github.com/antonmedv/expr"]
+    version = "v1.12.7"
+    hash = "sha256-kSCbWcK3VYQrKHX7SwuTooJ81zrChwmprQKoeBZecPo="
