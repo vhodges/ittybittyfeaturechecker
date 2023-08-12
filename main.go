@@ -98,8 +98,12 @@ func server() {
 
     })
 
-    http.HandleFunc("/dump/", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprintf(w, "Print all feature switches: UNIMPLEMENTED (sorry)")
+    http.HandleFunc("/features/", func(w http.ResponseWriter, r *http.Request){
+		json, err := os.ReadFile("features.json")
+		if err != nil {
+			fmt.Fprintf(w, "Error getting features\n")
+		}
+		_, _ = w.Write(json)
     })
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
