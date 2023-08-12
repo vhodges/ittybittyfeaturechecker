@@ -45,5 +45,25 @@
         "Label": "The baz feature is for testing ittybittyfeaturechecker",  
         "Archived": false,
         "Expression": "count % 2 == 0"        
+    },
+    "bat": {
+        "Label": "Now is after 2000-1-1 (An Effective Date)",  
+        "Archived": false,
+        "Expression": "Now().Compare(ParseDate('2000-01-01')) > 0"        
+    },
+    "bax": {
+        "Label": "Now is before 2099-1-1 (An end date)",  
+        "Archived": false,
+        "Expression": "Now().Compare(ParseDate('2099-01-01')) < 0"        
+    },
+    "baq": {
+        "Label": "Now is  2099-1-1 (Returns false)",  
+        "Archived": false,
+        "Expression": "Now().Compare(ParseDate('2099-01-01')) > 0"        
+    },
+    "baw": {
+        "Label": "Created at is > 2023-05-31 (for accounts created after Jan 01)",  
+        "Archived": false,
+        "Expression": "ParseDate(params.Get('created_at')).Compare(ParseDate('2023-06-01')) >= 0"        
     }
 }

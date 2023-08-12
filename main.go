@@ -10,6 +10,7 @@ import (
     "net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/antonmedv/expr"
 )
@@ -42,6 +43,16 @@ func main() {
 	server()
 }
 
+type ProgramEnv map[string]interface{}
+
+func (ProgramEnv) Now() time.Time {
+	return time.Now()
+}
+
+func (ProgramEnv) ParseDate(d string) (time.Time, error) {
+	return time.Parse(time.DateOnly, d)
+}
+
 func server() {
 
 	http.HandleFunc("/enabled/", func(w http.ResponseWriter, r *http.Request) {		
@@ -54,7 +65,7 @@ func server() {
 				fmt.Fprintf(w, "true")
 			} else {
 
-				env := map[string]interface{}{
+				env := ProgramEnv{
 					"feature":   	feature,
 					"count":     	counters.Get(feature_id),
 					"params":    	r.URL.Query(),
